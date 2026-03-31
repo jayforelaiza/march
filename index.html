@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | March 31</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            overflow: hidden; 
+        }
+
+        /* Subtle Progress indicator */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #f0f0f0;
+            z-index: 100;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: #1a1a1a;
+            width: 0%;
+            transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* Horizontal Scroll Wrapper */
+        .story-wrapper {
+            display: flex;
+            width: 400vw; /* 4 distinct pages */
+            height: 100vh;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Content Card */
+        .card {
+            max-width: 700px;
+            width: 100%;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.8s ease-out 0.4s;
+        }
+
+        /* Active Page Animation */
+        .page.active .card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .greeting {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .content-text {
+            font-family: 'Lora', serif;
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: #333;
+            text-align: left;
+        }
+
+        .closing-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            font-size: 1.4rem;
+            color: #000;
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+        }
+
+        /* Navigation */
+        .nav-controls {
+            position: fixed;
+            bottom: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            z-index: 10;
+        }
+
+        .btn {
+            background: none;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .btn:hover:not(:disabled) {
+            color: #000;
+        }
+
+        .btn:disabled {
+            opacity: 0;
+            cursor: default;
+        }
+
+        .page-indicator {
+            font-size: 0.75rem;
+            color: #ccc;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 600px) {
+            .content-text { font-size: 1.1rem; line-height: 1.7; }
+            .card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <div class="story-wrapper" id="storyWrapper">
+        <section class="page active">
+            <div class="card">
+                <div class="greeting">hey babbb,</div>
+                <div class="content-text">
+                    its the last day of march and i just want to say sorry for everything that happened this month. march was heavy for us. we fought so many times, almost every day, and i know it hurt you. i know i made you tired and maybe made you question us. that really hurts me because the last thing i ever want is to lose you. you giving me this last chance means everything to me. i do not take it lightly. i know words are not enough anymore, but i still want you to hear my heart. i love you and i still choose you even after all the fights, the silence, and the misunderstandings. i do not want us to end just because we had a hard month.
+                </div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card">
+                <div class="content-text">
+                    im sorry for the times i did not listen, for the times i answered badly, and for the times i made you feel alone even when we were together. you do not deserve that. you deserve patience, calm, and someone who protects your feelings. i want to be that person for you. march may have been full of fights, but it also made me realize how scared i am of losing you. i do not want april to start with fear. i want it to start with us trying again, softer this time, more understanding, more patient, and more careful with each other.
+                </div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card">
+                <div class="content-text">
+                    if this really is my last chance, i will hold it tightly. i will try harder to communicate, to stay calm, and to fix things before they get worse. i do not want another fight to be the reason you walk away. i want to fight for us, not with you. thank you for staying even when things got hard. thank you for not giving up yet. i still believe in us, and i hope you still do too.
+                </div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card">
+                <div class="closing-text">I LOVE YOU ALWAYS</div>
+            </div>
+        </section>
+    </div>
+
+    <div class="nav-controls">
+        <button class="btn" id="prevBtn" disabled>Prev</button>
+        <span class="page-indicator" id="pageIndicator">01 / 04</span>
+        <button class="btn" id="nextBtn">Next</button>
+    </div>
+
+    <script>
+        const wrapper = document.getElementById('storyWrapper');
+        const pages = document.querySelectorAll('.page');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progress-bar');
+        const indicator = document.getElementById('pageIndicator');
+        
+        let currentPage = 0;
+        const totalPages = 4;
+
+        function updatePage() {
+            // Horizontal move
+            wrapper.style.transform = `translateX(-${currentPage * 100}vw)`;
+            
+            // Handle active class for animations
+            pages.forEach((page, index) => {
+                if(index === currentPage) page.classList.add('active');
+                else page.classList.remove('active');
+            });
+            
+            // Buttons and UI
+            prevBtn.disabled = currentPage === 0;
+            nextBtn.innerText = currentPage === totalPages - 1 ? "End" : "Next";
+            indicator.innerText = `0${currentPage + 1} / 0${totalPages}`;
+            
+            // Progress Bar
+            const progress = ((currentPage + 1) / totalPages) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                updatePage();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                updatePage();
+            }
+        });
+
+        // Initialize
+        updatePage();
+    </script>
+</body>
+</html>

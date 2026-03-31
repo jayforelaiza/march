@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Story | March 31</title>
+    <title>For You | A Fresh Start</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,19 +17,21 @@
         }
 
         body {
-            background-color: #ffffff;
+            background-color: #fcfcfc;
             font-family: 'Inter', sans-serif;
             color: #1a1a1a;
             overflow: hidden; 
+            height: 100vh;
+            width: 100vw;
         }
 
-        /* Subtle Progress indicator */
+        /* Progress Bar */
         .progress-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: #f0f0f0;
             z-index: 100;
         }
@@ -41,55 +43,60 @@
             transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
         }
 
-        /* Horizontal Scroll Wrapper */
+        /* Movement Wrapper */
         .story-wrapper {
             display: flex;
-            width: 400vw; /* 4 distinct pages */
+            width: 700vw; /* 7 pages */
             height: 100vh;
-            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: transform 0.9s cubic-bezier(0.7, 0, 0.3, 1);
         }
 
         .page {
             width: 100vw;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
+            padding: 20px;
             flex-shrink: 0;
-            position: relative;
         }
 
-        /* Content Card */
         .card {
-            max-width: 700px;
+            max-width: 550px;
             width: 100%;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.8s ease-out 0.4s;
+            max-height: 65vh; 
+            overflow-y: auto;
+            padding: 10px;
+            text-align: center;
+            scrollbar-width: none;
         }
 
-        /* Active Page Animation */
-        .page.active .card {
-            opacity: 1;
-            transform: translateY(0);
+        .card::-webkit-scrollbar {
+            display: none;
         }
 
         .greeting {
             font-family: 'Lora', serif;
-            font-size: 1.4rem;
-            color: #1a1a1a;
-            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
             font-style: italic;
+            color: #999;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
         }
 
         .content-text {
             font-family: 'Lora', serif;
-            font-size: 1.25rem;
-            line-height: 1.9;
-            color: #333;
-            text-align: left;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #222;
+        }
+
+        .accent-text {
+            color: #777;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            font-style: italic;
         }
 
         .closing-text {
@@ -98,22 +105,27 @@
             letter-spacing: 0.3em;
             font-size: 1.4rem;
             color: #000;
-            margin-top: 3rem;
-            text-align: center;
-            border-top: 1px solid #eee;
-            padding-top: 2rem;
+            text-transform: uppercase;
         }
 
-        /* Navigation */
+        /* Fixed Navigation */
         .nav-controls {
             position: fixed;
-            bottom: 50px;
+            bottom: 40px;
+            left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 40px;
-            z-index: 10;
+            z-index: 1000;
+        }
+
+        .page-indicator {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            color: #bbb;
+            letter-spacing: 0.3em;
         }
 
         .btn {
@@ -122,31 +134,22 @@
             padding: 10px;
             cursor: pointer;
             font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: #999;
-            transition: color 0.3s ease;
-        }
-
-        .btn:hover:not(:disabled) {
-            color: #000;
+            transition: opacity 0.3s ease;
+            color: #1a1a1a;
+            font-weight: 600;
         }
 
         .btn:disabled {
             opacity: 0;
-            cursor: default;
-        }
-
-        .page-indicator {
-            font-size: 0.75rem;
-            color: #ccc;
-            letter-spacing: 0.1em;
+            cursor: not-allowed;
         }
 
         @media (max-width: 600px) {
-            .content-text { font-size: 1.1rem; line-height: 1.7; }
-            .card { padding: 1rem; }
+            .content-text { font-size: 1.2rem; line-height: 1.7; }
+            .card { max-height: 60vh; }
         }
     </style>
 </head>
@@ -157,71 +160,95 @@
     </div>
 
     <div class="story-wrapper" id="storyWrapper">
-        <section class="page active">
+        <section class="page">
             <div class="card">
                 <div class="greeting">hey babbb,</div>
                 <div class="content-text">
-                    its the last day of march and i just want to say sorry for everything that happened this month. march was heavy for us. we fought so many times, almost every day, and i know it hurt you. i know i made you tired and maybe made you question us. that really hurts me because the last thing i ever want is to lose you. you giving me this last chance means everything to me. i do not take it lightly. i know words are not enough anymore, but i still want you to hear my heart. i love you and i still choose you even after all the fights, the silence, and the misunderstandings. i do not want us to end just because we had a hard month.
+                    its the last day of march and i just want to say sorry for everything that happened this month. march was heavy for us. 
                 </div>
+                <div class="accent-text">we fought so many times, almost every day, and i know it hurt you.</div>
             </div>
         </section>
 
         <section class="page">
             <div class="card">
                 <div class="content-text">
-                    im sorry for the times i did not listen, for the times i answered badly, and for the times i made you feel alone even when we were together. you do not deserve that. you deserve patience, calm, and someone who protects your feelings. i want to be that person for you. march may have been full of fights, but it also made me realize how scared i am of losing you. i do not want april to start with fear. i want it to start with us trying again, softer this time, more understanding, more patient, and more careful with each other.
+                    i know i made you tired and maybe made you question us. that really hurts me because the last thing i ever want is to lose you. 
                 </div>
+                <div class="accent-text">you giving me this last chance means everything to me. i do not take it lightly.</div>
             </div>
         </section>
 
         <section class="page">
             <div class="card">
                 <div class="content-text">
-                    if this really is my last chance, i will hold it tightly. i will try harder to communicate, to stay calm, and to fix things before they get worse. i do not want another fight to be the reason you walk away. i want to fight for us, not with you. thank you for staying even when things got hard. thank you for not giving up yet. i still believe in us, and i hope you still do too.
+                    i know words are not enough anymore, but i still want you to hear my heart. i love you and i still choose you even after all the fights, the silence, and the misunderstandings. 
                 </div>
+                <div class="accent-text">i do not want us to end just because we had a hard month.</div>
             </div>
         </section>
 
         <section class="page">
             <div class="card">
-                <div class="closing-text">I LOVE YOU ALWAYS</div>
+                <div class="content-text">
+                    im sorry for the times i did not listen, for the times i answered badly, and for the times i made you feel alone even when we were together.
+                </div>
+                <div class="accent-text">you deserve patience, calm, and someone who protects your feelings. i want to be that person for you.</div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card">
+                <div class="content-text">
+                    march may have been full of fights, but it also made me realize how scared i am of losing you. i do not want april to start with fear. 
+                </div>
+                <div class="accent-text">i want it to start with us trying again, softer this time.</div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card">
+                <div class="content-text">
+                    if this really is my last chance, i will hold it tightly. i will try harder to communicate, to stay calm, and to fix things before they get worse. 
+                </div>
+                <div class="accent-text">i want to fight for us, not with you. thank you for staying.</div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card">
+                <div class="content-text" style="margin-bottom: 3rem;">
+                    i still believe in us, and i hope you still do too.
+                </div>
+                <div class="closing-text">I LOVE YOU ALWAYS BABYYY!!</div>
             </div>
         </section>
     </div>
 
     <div class="nav-controls">
-        <button class="btn" id="prevBtn" disabled>Prev</button>
-        <span class="page-indicator" id="pageIndicator">01 / 04</span>
+        <button class="btn" id="prevBtn" disabled>Back</button>
+        <span class="page-indicator" id="pageInd">01 / 07</span>
         <button class="btn" id="nextBtn">Next</button>
     </div>
 
     <script>
         const wrapper = document.getElementById('storyWrapper');
-        const pages = document.querySelectorAll('.page');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const progressBar = document.getElementById('progress-bar');
-        const indicator = document.getElementById('pageIndicator');
+        const pageInd = document.getElementById('pageInd');
         
         let currentPage = 0;
-        const totalPages = 4;
+        const totalPages = 7;
 
         function updatePage() {
-            // Horizontal move
             wrapper.style.transform = `translateX(-${currentPage * 100}vw)`;
             
-            // Handle active class for animations
-            pages.forEach((page, index) => {
-                if(index === currentPage) page.classList.add('active');
-                else page.classList.remove('active');
-            });
-            
-            // Buttons and UI
             prevBtn.disabled = currentPage === 0;
-            nextBtn.innerText = currentPage === totalPages - 1 ? "End" : "Next";
-            indicator.innerText = `0${currentPage + 1} / 0${totalPages}`;
+            nextBtn.innerText = currentPage === totalPages - 1 ? "April 1" : "Next";
             
-            // Progress Bar
+            pageInd.innerText = `0${currentPage + 1} / 0${totalPages}`;
+            
             const progress = ((currentPage + 1) / totalPages) * 100;
             progressBar.style.width = `${progress}%`;
         }
@@ -229,6 +256,10 @@
         nextBtn.addEventListener('click', () => {
             if (currentPage < totalPages - 1) {
                 currentPage++;
+                updatePage();
+            } else {
+                // Smoothly resets to start if they click the last button
+                currentPage = 0;
                 updatePage();
             }
         });
@@ -240,7 +271,6 @@
             }
         });
 
-        // Initialize
         updatePage();
     </script>
 </body>
